@@ -2,20 +2,20 @@
 session_start();
 include 'config.php';
 $check=1;
-$error='moi dang nhap';
+$error='Mời đăng nhập';
 $error_email='';
 $error_password='';
-$dsusers='';
+$list_user='';
 
 if(isset($_POST['submit'])){
     
     if($_POST['email']==''){
-        $error_email='moi nhap email';
+        $error_email='Mời nhập email';
         $check=2;
     }
 
     if($_POST['password']==''){
-        $error_password='moi nhap password';
+        $error_password='Mời nhập password';
         $check=2;
     }
     if($check==1){
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 
             $_SESSION['id'] = $data['users']['id'];
             $error = 'Đăng nhập thành công';
-            $dsusers='<button class="btn btn-primary" ><a href="welcom.php"><i class="fa fa-lock"></i> List User</a></button>';
+            $list_user='<button class="btn btn-primary" ><a href="welcom.php"><i class="fa fa-lock"></i> List User</a></button>';
         }else{
             $error = 'Đăng nhập thất bại';
         }
@@ -65,10 +65,9 @@ if(isset($_POST['submit'])){
         <p><?php echo $error_email;  ?></p>
         Password:<input type="password" name="password" placeholder="Password">
         <p><?php echo $error_password;  ?></p>
-        
         <button type="submit" name='submit' class="btn btn-primary" >Đăng Nhập</button>
     </form>
-    <p><?php echo $dsusers;  ?></p>
+    <p><?php echo $list_user;  ?></p>
 
 </body>
 </html>

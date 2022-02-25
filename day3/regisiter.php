@@ -2,7 +2,7 @@
 
 include 'config.php';
 
-$error='moi ban dang ky';
+$error='Mời bạn đăng kí';
 $error_name='';
 $error_password='';
 $error_email='';
@@ -12,15 +12,15 @@ $check=1;
 if(isset($_POST['submit'])){
 
     if($_POST['name']==''){
-        $error_name='moi nhap ten';
+        $error_name='Mời nhập tên';
         $check=2;
     }
     if($_POST['password']==''){
-        $error_password='moi nhap password';
+        $error_password='Mời nhập password';
         $check=2;
     }
     if($_POST['email']==''){
-        $error_email='moi nhap email';
+        $error_email='Mời nhập email';
         $check=2;
     }
 
@@ -35,9 +35,9 @@ if(isset($_POST['submit'])){
         
 
         if($result = $con->query($sql)){
-            $error = "dang ky thanh cong moi ban dang nhap";
+            $error = "Đăng kí thành công";
         }else{
-            $error = 'dang ky that bai';
+            $error = 'Đăng kí thất bại';
         }
     }
 

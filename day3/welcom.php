@@ -1,14 +1,9 @@
 <?php
 session_start();
 include 'connect.php';
-
-
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
 }
-
-
-
 $sql = "SELECT * FROM users WHERE id='".$id."'";
 $result = $con -> query($sql);
 $data=[];
@@ -18,32 +13,23 @@ if($result->num_rows >0){
         $data[]=$row;
     }
 }
-
-
-
 $html='';
-
-foreach($data as $vl){
+foreach($data as $item){
     $html .='<tr ">
-				<td>'.$vl['id'].'</td>
-				<td>'.$vl['name'].'</td>
-				<td>'.$vl['email'].'</td>
+				<td>'.$item['id'].'</td>
+				<td>'.$item['name'].'</td>
+				<td>'.$item['email'].'</td>
 				
 			</tr>';
 }
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dsusers</title>
+    <title>List user</title>
 </head>
 <body>
     
@@ -61,7 +47,5 @@ foreach($data as $vl){
             ?>
         </tbody>
     </table>
-
-
 </body>
 </html>
