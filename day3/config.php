@@ -6,9 +6,9 @@
 	
 	$con = new mysqli($servername, $username, $password, $database);
 	if ($con->connect_error) {
-	    die("Connection failed: " . $con->connect_error);
+	    die("Kết nối thất bại: " . $con->connect_error);
 	} else {
-		echo "kết nối thất bại";
+		echo "";
 	}
 	
 ?>
