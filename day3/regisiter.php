@@ -50,24 +50,57 @@ if(isset($_POST['submit'])){
 <form action="" method="POST">
 <div class="form-group">
     <label for="">Name user</label>
-    <input type="text" name="name"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name user">
+    <input type="text" name="name"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name user"  onBlur="validateName()">
     <p><?php echo $error_name;  ?></p>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <label for="exampleInputEmail1">Email </label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  onBlur="validateEmail()">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     <p><?php echo $error_email;  ?></p>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <label for="exampleInputPassword1">Mật khẩu</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  onblur="validatePassword()">
+    <p><?php echo $error_password;  ?></p>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
+    <input type="password" name="repassword" class="form-control" id="exampleInputPassword1" placeholder="Password"  onblur="validatePassword()">
     <p><?php echo $error_password;  ?></p>
   </div>
   <button type="submit" name="submit" class="btn btn-primary">Đăng kí</button>
   <button class="btn btn-primary" style="background:red; float:right" ><a href="login.php">Đăng nhập</a></button>
   </form>
-  
+  <script>
+       function validateName() {
+        var str = form01.name.value;
+        if (str.length == 0) {
+            alert("Họ Tên không được bỏ trống. Vui lòng nhập đầy đủ họ và tên!");
+            return false;
+        }
+        return true
+    }
+      function validatePassword() {
+        var str01 = form01.password.value;
+        var str02 = form01.repassword.value;
+
+        var passwordFormat = /^?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+        if ((str01.length == 0 && str02.length == 0) || str01.length < 8 || str01 != str02 || !passwordFormat.test(str01)) {
+            alert("Vui lòng kiểm tra mật khẩu!");
+            return false;
+        }
+    }
+    function validateEmail() {
+        var str = form01.email.value;
+
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (str.length == 0 || !mailformat.test(str)) {
+            alert(" Vui lòng kiểm tra lại email!");
+            return false;
+        }
+
+  </script>
 
 
 </html>
